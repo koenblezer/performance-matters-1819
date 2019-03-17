@@ -1,0 +1,32 @@
+<%- include ./partials/head.ejs %>
+
+<a href="../overview">Go back.</a>
+
+<h1><%- title %></h1>
+
+<div id="specificresults"></div>
+
+<script>
+
+var data = JSON.parse('<%- detail_output %>');
+
+  var results = document.querySelector('#specificresults');
+
+  for (var i = 0; i < data.data.length; i++) {
+
+    var link = document.createElement('a');
+    var image = document.createElement('img');
+    image.setAttribute('src', 'https://media.giphy.com/media/'+ data.data[i].id + '/giphy.gif');
+    link.setAttribute('href', 'https://media.giphy.com/media/'+ data.data[i].id + '/giphy.gif');
+    // imgresults.appendChild(image);
+    results.appendChild(image);
+    results.appendChild(link);
+    link.innerHTML = 'Go to GIPHY page';
+    console.log(link);
+  }
+
+console.log('DETAILS OUTPUT')
+
+</script>
+
+<%- include ./partials/footer.ejs %>

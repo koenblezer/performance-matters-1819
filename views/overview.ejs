@@ -1,0 +1,29 @@
+<%- include ./partials/head.ejs %>
+
+<h1> <%- overviewtitle %> </h1>
+
+<div id="imgresults"></div>
+
+<script>
+
+var data = JSON.parse('<%- overview_output %>');
+
+  var imgresults = document.querySelector('#imgresults');
+
+  for (var i = 0; i < data.data.length; i++) {
+
+    var link = document.createElement('a');
+    var image = document.createElement('img');
+    image.setAttribute('src', 'https://media.giphy.com/media/'+ data.data[i].id + '/giphy.gif');
+    link.setAttribute('href', '/detail/'+ data.data[i].id);
+    // imgresults.appendChild(image);
+    imgresults.appendChild(link);
+    link.innerHTML = '<img src="' + image.src + ' "/> ';
+    console.log(link);
+  }
+
+console.log('STILL WORKING?')
+
+</script>
+
+<%- include ./partials/footer.ejs %>
