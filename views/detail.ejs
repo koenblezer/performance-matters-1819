@@ -1,31 +1,30 @@
 <%- include ./partials/head.ejs %>
 
-<a href="../overview">Go back.</a>
+<h1 id="detail_title"></h1>
 
-<h1><%- title %></h1>
+<a class="detail_link" target="_blank"><img id="detail_gif" alt="detailgif" /></a>
 
-<div id="specificresults"></div>
+<div id="links">
+<a class="detail_link" target="_blank">GIPHY page</a>
+<a id="original_url" target="_blank">Original post link</a>
+<a href="../overview">Go back</a>
+</div>
+
+
 
 <script>
 
 var data = JSON.parse('<%- detail_output %>');
 
-  var results = document.querySelector('#specificresults');
+var detail = document.querySelector('#detail_gif');
+var link = document.querySelector('.detail_link');
+var title = document.querySelector('#detail_title');
+var original_url = document.querySelector('#original_url');
 
-  for (var i = 0; i < data.data.length; i++) {
-
-    var link = document.createElement('a');
-    var image = document.createElement('img');
-    image.setAttribute('src', 'https://media.giphy.com/media/'+ data.data[i].id + '/giphy.gif');
-    link.setAttribute('href', 'https://media.giphy.com/media/'+ data.data[i].id + '/giphy.gif');
-    // imgresults.appendChild(image);
-    results.appendChild(image);
-    results.appendChild(link);
-    link.innerHTML = 'Go to GIPHY page';
-    console.log(link);
-  }
-
-console.log('DETAILS OUTPUT')
+detail.setAttribute('src', 'https://media.giphy.com/media/'+ data.data[0].id + '/giphy.gif');
+link.setAttribute('href', 'https://media.giphy.com/media/'+ data.data[0].id + '/giphy.gif');
+title.innerHTML = data.data[0].title;
+original_url.setAttribute('href', data.data[0].source_post_url);
 
 </script>
 
