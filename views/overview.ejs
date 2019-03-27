@@ -1,12 +1,19 @@
-<%- include ./partials/head.ejs %>
+\<%- include ./partials/head.ejs %>
 
 <h1> <%- overviewtitle %> </h1>
 
 <div id="imgresults"></div>
 
-<script>
+<%- include ./partials/head.ejs %>
 
-var data = JSON.parse('<%- overview_output %>');
+<h1>Posts</h1>
+<% postData.forEach(function(post) { %>
+	<a href="/post/<%- post.id %>"><%- post.title %></a>
+<% }) %>
+
+<%- include ./partials/footer.ejs %>
+
+<%# var data = JSON.parse('<%- overview_output %>'); %>
 
   var imgresults = document.querySelector('#imgresults');
 
@@ -20,8 +27,6 @@ var data = JSON.parse('<%- overview_output %>');
     imgresults.appendChild(link);
     link.innerHTML = '<img src="' + image.src + ' "/> ';
     console.log(link);
-  }
-
-</script>
+  }  %>
 
 <%- include ./partials/footer.ejs %>

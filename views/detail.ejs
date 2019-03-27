@@ -11,21 +11,17 @@
 </div>
 
 
+var data = JSON.parse('<%- detail_output %>'); %>
 
-<script>
-
-var data = JSON.parse('<%- detail_output %>');
-
-var detail = document.querySelector('#detail_gif');
+<% var detail = document.querySelector('#detail_gif'); %>
 var link = document.querySelector('.detail_link');
 var title = document.querySelector('#detail_title');
 var original_url = document.querySelector('#original_url');
 
 detail.setAttribute('src', 'https://media.giphy.com/media/'+ data.data[0].id + '/giphy.gif');
 link.setAttribute('href', 'https://media.giphy.com/media/'+ data.data[0].id + '/giphy.gif');
-title.innerHTML = data.data[0].title;
+title.innerHTML = data.data[0].title; %>
+
 original_url.setAttribute('href', data.data[0].source_post_url);
 
-</script>
-
-<%- include ./partials/footer.ejs %>
+include ./partials/footer.ejs %>
